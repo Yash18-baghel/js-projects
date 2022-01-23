@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        :root{
+            --space:10px;
+            --blur:0px;
+            --color:#BADA55;
+        }
+        body{
+            color:white;
+        }
+        .img-fluid{
+            padding: var(--space);
+            background: var(--color);
+            filter: blur(var(--blur));
+        }
+        .display-4{
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body style="height: 95vh;background:#3E3534" class="d-flex justify-content-center flex-column align-items-center">
+        
+    
+    <div class="row container">
+        <div class="row w-100 d-flex align-items-center justify-content-center">
+            <h1 class="mt-5 text-center">Update CSS variable using <span style="color:var(--color)">JS</span></h1>
+        </div>
+        <div class="col-6 d-flex align-items-center justify-content-end" style="padding:0; display: inline-table;">
+            <label for="space" class="display-4 " >spacing:</label>
+            <input type="range" name="space" min="10" max="200" value="10" data-sizing="px">
+        </div>
+        <div class="col-6">
+            <label for="Blur " class="display-4 pl-4" >Blur:</label>
+            <input type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+        </div>
+        <div class="row d-flex align-items-center justify-content-center w-100">
+                <label for="spacing" class="display-4" >spacing:</label>
+                <input type="color" name="color"  value="#BADA55">
+        </div>
+    </div>
+            
+            
+        </div>
+        
+        <div >
+            <img class="img-fluid" src="https://media.istockphoto.com/photos/mount-hood-oregon-picture-id1268487061?b=1&k=20&m=1268487061&s=170667a&w=0&h=3fHYwaImlqUETcjCnSV7YO2-PzCFvaX6VSQaiGfWqpc=" alt="" >
+        </div>
+</body>
+<script>
+    const inputs = document.querySelectorAll('input');
+    // console.log(input);\
+    function handleUpdate(){
+        var sizing = this.dataset.sizing || '';
+        console.log(this.value + sizing);
+
+        document.documentElement.style.setProperty(`--${this.name}`,this.value + sizing)
+    }
+    inputs.forEach(input => input.addEventListener('change',handleUpdate))
+    inputs.forEach(input => input.addEventListener('mouseover',handleUpdate))
+
+</script>
+
+</html>

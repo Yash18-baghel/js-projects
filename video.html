@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .video-contianer{
+            position: absolute;
+            top:0;
+            left: 0;
+            height: 100%;
+            width:100%;
+            object-fit: cover;
+            z-index: -10;
+        }
+        header{
+            position: relative;
+            display: grid;
+            min-height: 100vh;
+            place-items: center;
+            z-index: 10;
+        }
+        h1{
+           color:white;
+           /* font-family: ; */
+        }
+        header::after{
+            content:"";
+            position:absolute;
+            top:0;
+            left: 0;
+            height: 100%;
+            width:100%;
+            background: rgba(0, 0, 0, 0.6   );
+            z-index: -1;
+        }
+        .btn-container{
+            position:absolute;
+            bottom  :7%;
+            left:7%;
+            width:7rem;
+            height: 2rem;
+            z-index: 10;
+        }
+        .play{
+            padding:10px;
+        }
+        .switch{
+            position:absolute;
+            width: 50%;
+            height:100%;
+            top:0;
+            left:0;
+            margin:0;
+            display:block;
+            transition: 0.1s linear 0.1s;
+            border-radius: 8px;
+            background:rgba(45, 188, 183, 0.7)
+        }
+        .slide .switch{
+            left:50%;
+        }
+        .preloader{
+            position:absolute;
+            top:0;
+            right:0;
+            left:0;
+            bottom:0;
+            display: grid;
+            /* width:100%; */
+            place-items: center;
+            /* left:0; */
+            visibility: visible;
+            z-index: 999;
+        }
+        .hide-preloader{
+            visibility:hidden;
+            z-index: -999;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="preloader">
+        <img src="https://flevix.com/wp-content/uploads/2019/07/Color-Loading-1.gif" alt="">
+    </div>
+    <header>
+        <video class="video-contianer"    >
+            <source type="video/mp4" src="https://statusguide.com/anykreeg/2021/06/yt1s.com-Son-Goku-AMV-Astronaut-In-The-Ocean_480p.mp4" > 
+            
+        </video>
+        <h1>
+            Video project
+        </h1>
+        <button class="btn-container slide">
+            <span class="play">Play</span>
+            <span class="play">Pause</span>
+            <span class="switch "></span>
+        </button>
+    </header>
+
+
+
+</body>
+<script>
+    const btn = document.querySelector('.btn-container');
+    const video = document.querySelector(".video-contianer");
+    console.log(video)
+    video.Pause
+    btn.addEventListener('click',function(){
+        // video.play();
+        if(!btn.classList.contains('slide')){
+            btn.classList.add('slide');
+            video.pause();
+        }   
+        else{
+            btn.classList.remove('slide');
+            video.play();
+        }
+
+    });
+    const preloader = document.querySelector('.preloader');
+    window.addEventListener("load",function(){
+        console.log(preloader);
+        preloader.classList.add('hide-preloader');
+    })
+</script>
+</html>

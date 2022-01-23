@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Countdown</title>
+</head>
+
+<body style="height: 100vh;background: #C6BCF4;">
+    <div class="d-flex justify-content-center align-items-start my-5 h-100 container">
+        <div class="row my-5 ">
+            <div class="col-lg-6 ">
+                <img src="https://i.pcmag.com/imagery/reviews/07GmIupznWhAzDQ3Z7li99a-1.fit_lim.size_625x365.v1632849626.jpg"
+                    alt="" class="img-fluid rounded">
+            </div>
+            <div class="col-lg-6">
+                <h3>OLD IPHONE GIVEAWAY</h4>
+                    <h6 class="EndsOn">GIVEAWAY ENDS ON:</h6>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod magnam atque illo maiores
+                        perspiciatis tempore distinctio, consequuntur minima eum, similique quos id quibusdam rem neque
+                        suscipit adipisci velit incidunt ipsum ullam totam! Sunt cum fugit quisquam recusandae, quia vel
+                        praesentium.</p>
+                    <div class="row items mb-2">
+                        <div class="col-3 ">
+                            <div class="bg-dark text-white p-3">
+                                <h1 class="text-center days">
+                                </h1>
+                                <h5 class="text-center">Days</h2>
+                            </div>
+                        </div>
+                        <div class="col-3 ">
+                            <div class="bg-dark text-white p-3">
+                                <h1 class="text-center hours">
+                                </h1>
+                                <h5 class="text-center">HOURS</h2>
+                            </div>
+                        </div>
+                        <div class="col-3 ">
+                            <div class="bg-dark text-white p-3">
+                                <h1 class="text-center min">
+                                </h1>
+                                <h5 class="text-center">Minutes</h2>
+                            </div>
+                        </div>
+                        <div class="col-3 ">
+                            <div class="bg-dark text-white p-3">
+                                <h1 class="text-center sec">
+                                </h1>
+                                <h5 class="text-center">Seconds</h2>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+<script>
+    const months = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+    ];
+    const days = [
+        'Sunday',
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+    ]
+
+    const EndsOn = document.querySelector('.EndsOn');
+    const FututreDate =  new Date(2022,0,11,20,0,0);
+    // console.log(FututreDate) 
+    const year =  FututreDate.getFullYear();
+    const month =  FututreDate.getMonth();
+    const date =  FututreDate.getDate();
+    const day =  FututreDate.getDay();
+    const hours =  FututreDate.getHours();
+    const minutes =  FututreDate.getMinutes();
+    EndsOn.innerHTML = `This Giveaway Ends on: ${days[day]}  ${date} ${months[month]} ${year} ${hours}:${minutes}`;
+
+   
+    // console.log(Math.floor(t/OneDay));
+    // console.log(Math.floor((t%OneDay)/OneHour));
+
+    function getRemainingTime(){
+
+        // console.log(1)
+        const CurrentDate = new Date();
+
+        FututreTime = FututreDate.getTime();
+        CurrentTime = CurrentDate.getTime();
+        t = FututreTime - CurrentTime;
+        const OneDay = 24*60*60*1000;
+        const OneHour = 60*60*1000;
+        const OneMin = 60*1000;
+        const OneSec = 1000;
+        
+        let Remainingdays = Math.floor(t/OneDay);
+        let Remaininghours = Math.floor((t%OneDay)/OneHour);
+        let Remainingminutes = Math.floor((t%OneHour)/OneMin);
+        let Remainingsecs = Math.floor((t%OneMin)/OneSec);
+        if(Remainingdays<10){
+            Remainingdays = `0${Remainingdays}`;
+        }
+        if(Remaininghours<10){
+            Remaininghours = `0${Remaininghours}`;
+        }
+        if(Remainingminutes<10){
+            Remainingminutes = `0${Remainingminutes}`;
+        }
+        if(Remainingsecs<10){
+            Remainingsecs = `0${Remainingsecs}`;
+        }
+        const values = [Remainingdays,Remaininghours,Remainingminutes,Remainingsecs]
+        const items =  document.querySelector('.items');
+        const datedivs = items.querySelectorAll('h1'); 
+        datedivs.forEach(function(div,index){
+            console.log(div.innerHTML)
+            div.textContent = values[index];
+        })
+    }
+    setInterval(getRemainingTime,1000);
+</script>
+</html>

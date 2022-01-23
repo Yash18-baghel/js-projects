@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+        img {
+            /* width:400px; */
+            height: 250px !important;
+        }
+
+        .card {
+            background-color: #373b69;
+            border-radius: 3px;
+            box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            position: relative;
+            margin: 1rem;
+            color: white;
+            width: 100%;
+        }
+
+        main {
+            padding-top: 80px;
+            display: flex;
+            flex-wrap: wrap;
+            /* grid-template-columns: auto auto auto auto; */
+        }
+
+        input {
+            background: #404781;
+            outline: 0;
+            color: white    ;
+            /* border-radius: 25%; */
+        }
+
+        body {
+            background: #22274E;
+        }
+
+        nav {
+            background: #12152c;
+        }
+        ::placeholder {
+            color: white    ;
+            opacity: 1;
+            /* Firefox */
+        }
+    </style>
+</head>
+
+<body>
+    <nav class=" fixed-top d-flex justify-content-end">
+        <form>
+            <input class="rounded py-1 my-3 mx-5" type="text" placeholder="search movie..">
+        </form>
+    </nav>
+    <main>
+
+    </main>
+</body>
+<script>
+
+    const APIURL =
+        "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=04c35731a5ee918f014970082a0088b1&page=1";
+    const IMGPATH = "https://image.tmdb.org/t/p/w1280";
+    const SEARCHAPI = "https://api.themoviedb.org/3/search/movie?&api_key=04c35731a5ee918f014970082a0088b1&query=";
+
+    getMovies(APIURL);
+
+    async function getMovies(url){
+        const x = await fetch(url);
+        const y = await x.json();
+        console.log(y.results.length)   
+        if(y.results.length==0){
+            document.querySelector('body').innerHTML = `<div style="height:80vh" class=" text-white d-flex justify-content-center align-items-center">
+        <h1 style="font-size:50px;">No Results Found</h1>
+    </div>`;
+        }
+        showMovies(y)
+    }
+
+    async function showMovies(movies) {
+
+        document.querySelector('main').innerHTML = '';
+        // const x = await fetch(SEARCHAPI + 'guy');
+        // const y = await x.json()
+        // console.log(y)
+
+        // const resp = await fetch(APIURL);
+        // const respData = await resp.json();
+
+        movies.results.forEach(movies => {
+            img = IMGPATH + movies.backdrop_path;
+            name = movies.original_title;
+            card = document.createElement('div');
+            card.innerHTML = `
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top img-fluid" src="${img}">
+                <div class="card-body d-flex justify-content-between">
+                    <p class="card-text">${name}</p>
+                    <div class="ml-2">
+                        <button class="btn ${findrating(movies.vote_average)}">${movies.vote_average}</button>    
+                    </div>
+                </div>
+            </div>`;
+            card.classList.add('col-3')
+            document.querySelector('main').appendChild(card)
+        })
+    }
+    // showMovies()
+
+    function findrating(x) {
+        if (x >= 8) {
+            return 'text-success';
+        }
+        else if (x >= 5) {
+            return 'text-warning';
+        }
+        else {
+            return 'text-danger';
+        }
+    }
+
+    document.querySelector('form').addEventListener('submit',(e)=>{
+        e.preventDefault()
+        search = document.querySelector('input').value
+        getMovies(SEARCHAPI + search)
+        document.querySelector('input').value = '';
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+    let stocks = {
+        Fruits: ["strawberry", "grapes", "banana", "apple"],
+        liquid: ["water", "ice"],
+        holder: ["cone", "cup", "stick"],
+        toppings: ["chocolate", "peanuts"],
+    };
+    // let is_shop_open = true;
+
+    function time(ms, flag) {
+        return new Promise((resolve, reject) => {
+
+            if (flag) {
+                setTimeout(resolve, ms);
+            }
+
+            else {
+                reject(console.log("Shop is closed"))
+            }
+        });
+    }
+
+    async function kitchen() {
+        try {
+            await time(2000, true)
+            console.log(`${stocks.Fruits[0]} was selected`)
+
+            await time(0000, true)
+            console.log("production has started")
+
+            await time(2000, true)
+            console.log("fruit has been chopped")
+
+            await time(1000, true)
+            console.log(`${stocks.liquid[0]} and ${stocks.liquid[1]} added`)
+
+            await time(1000, true)
+            console.log("start the machine")
+
+            await time(2000, true)
+            console.log(`ice cream placed on ${stocks.holder[1]}`)
+
+            await time(3000, false)
+            console.log(`${stocks.toppings[0]} as toppings`)
+
+            await time(2000)
+            console.log("Serve Ice Cream")
+        }
+
+        catch (error) {
+            console.log("customer left")
+        }
+    }
+// kitchen()
+</script>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <style>
+        body{
+            background-image: url(https://www.shutterstock.com/blog/wp-content/uploads/sites/5/2020/02/Usign-Gradients-Featured-Image.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            height:95vh;
+         }
+         .clock{
+            position:relative;
+            height: 400px;
+            width: 400px;
+            border-radius: 50%;
+            border:20px solid white
+        }
+        .hand{
+            position:absolute;
+            top:50%;
+            width:50%;
+            transform-origin: 100%;
+            transform: rotate(90deg);
+            border-top:5px solid black;
+            transition:all 0.05s;
+            transition-timing-function: 0.1,2.7,0.58,1;
+        }
+        .hour-hand{
+            border-top:5px solid black;
+            
+
+        }
+        .minutes-hand{
+            border-top:3px solid black !important;
+
+
+        }
+        .second-hand{
+            border-top:2px solid black ;
+        }
+
+    </style>
+</head>
+<body class="d-flex justify-content-center align-items-center">
+    <div class="clock">
+        <div class="hand second-hand"></div>
+        <div class="hand minutes-hand"></div>
+        <div class="hand hour-hand"></div>
+    </div>
+</body>
+<script>
+    const secondhand = document.querySelector('.second-hand');
+    const minhand = document.querySelector('.minutes-hand');
+    const hourhand= document.querySelector('.hour-hand');
+    function settime(){
+        const time = new Date();
+        const seconds = time.getSeconds();
+
+        const secodnsdegree = ((seconds/60)*360) +90;    
+        secondhand.style.transform = `rotate(${secodnsdegree}deg)`;
+    
+        const mins = time.getMinutes();
+
+        const mindegree = ((mins/60)*360) + 90 ;    
+        minhand.style.transform = `rotate(${mindegree}deg)`;
+
+        let hour = time.getHours();
+        if(hour>12)
+        {
+            hour -= 12;
+
+        }        
+        // console.log(hour)
+
+        const hourdegree = ((hour/12)*360) + 90;    
+        hourhand.style.transform = `rotate(${hourdegree}deg)`;
+    }
+    setInterval(settime,1000);
+</script>
+</html>

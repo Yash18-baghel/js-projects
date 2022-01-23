@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <style>
+        .btn{
+            width: 34%;
+            margin: 0;
+            padding: 0;
+            left:0;
+            border-radius:0;
+            color: black !important;
+        }
+        .active{
+            background: white !important;
+            border:black;
+            
+
+        }
+        .show{
+            display: block !important;
+        }
+    </style>
+</head>
+<body style="background: #F1F6FD;">
+    <h1 class="pt-5 pb-2 d-flex justify-content-center">About</h1>
+    <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia, voluptatibus.</p>
+    <div class="container d-flex justify-content-center mt-5">
+        <div class="row  w-75 d-flex justify-content-center">
+            <div class="col-6  rounded">
+                <img src="https://i.pinimg.com/originals/cc/18/8c/cc188c604e58cffd36e1d183c7198d21.jpg" alt="" class="img-fluid border rounded">
+            </div>
+            <div style="padding:0;" class="bg-white article rounded col-6">
+                <div class="btn-header d-flex bg-secondary justify-content-start mb-4">
+                    <button data-id="history" class="btn btn-secondary py-2 active" >History</button>
+                    <button data-id="vision" class="btn btn-secondary py-2">Vision</button>
+                    <button data-id="goal" class="btn btn-secondary py-2">Goal</button>
+                </div>
+                <div class="content container show" style="display:none" id="history">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam blanditiis, hic vel ipsum dolorum quidem ab? Illum voluptate corrupti numquam nostrum, minus totam accusamus perferendis harum alias, quam laborum voluptatibus nesciunt reprehenderit vitae quidem a labore et esse aspernatur sint officia quisquam sunt porro? Ullam nulla consequuntur voluptates quae aut. </p>
+                </div>
+                <div class="content container " id="vision"  style="display:none">
+                    <p>Lorem ipsum dolor sit amet conseitiis, hic vel ipsum dolorum quidem ab? Illum voluptate corrupti numquam nostrum, minus totam accusamus perferendis harum alias, quam laborum voluptatibus nesciunt reprehenderit vitae quidem a labore et esse aspernatur sint officia quisquam sunt porro? Ullam nulla consequuntur voluptates quae aut. </p>
+                </div>
+                <div class="content container " id="goal"  style="display:none">
+                    <p>Lorem ipsumlanditiis, hic vel ipsum dolorum quidem ab? Illum voluptate corrupti numquam nostrum, minus totam accusamus perferendis harum alias, quam laborum voluptatibus nesciunt reprehenderit vitae quidem a labore et esse aspernatur sint officia quisquam sunt porro? Ullam nulla consequuntur voluptates quae aut. </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+
+<script>
+    const btns = document.querySelectorAll('.btn');
+    const articles = document.querySelector('.article');
+    const contents = document.querySelectorAll('.content');
+    articles.addEventListener('click',function(e){
+        const id = e.target.dataset.id;
+        if(id){
+            btns.forEach(function(btn){
+                btn.classList.remove('active')
+            });
+            e.target.classList.add('active')
+            contents.forEach(function(item){
+                item.classList.remove('show')
+            });
+            x = document.getElementById(id);
+            x.classList.add('show');
+        }
+        
+    });
+
+</script>
+
+</html>

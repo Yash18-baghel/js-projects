@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flip Card</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body{
+            height:100vh;
+        }
+        img{
+            width:190px;
+            border: 1px solid purple;
+
+            height: 190px;
+        }
+        .col-4{
+            padding: 0 !important;
+        }
+        .col-lg-2{
+            padding: 0 !important;
+        }
+        @media only screen and (max-width: 600px) {
+            img{
+            width:125px;
+            height: 125px;
+        }
+        }
+    </style>
+</head>
+<body >
+    <div class="container d-flex flex-column">
+        <h1 class="text-center py-4">Your Score: <span>0</span></h1>
+        <div class="grid row">
+            <!-- <img  src="https://images.unsplash.com/photo-1642333943577-e043283363b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxM3x8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" alt="" class="img-fluid col-2"> -->
+        </div>
+    </div>
+</body>
+<script>
+
+addEventListener('DOMContentLoaded',() =>{
+    const cards = [
+        {
+            img:"https://github.com/kubowania/memory-game/blob/master/images/milkshake.png?raw=true",
+            name:'milkshake',
+        },
+        {
+            img:"https://github.com/kubowania/memory-game/blob/master/images/cheeseburger.png?raw=true",
+            name:'burger',
+        },
+        {
+            img:"https://github.com/kubowania/memory-game/blob/master/images/fries.png?raw=true",
+            name:'fries',
+        },
+        {
+            img:"https://github.com/kubowania/memory-game/blob/master/images/hotdog.png?raw=true",
+            name:'hotdog',
+        },
+        {
+            img:"https://github.com/kubowania/memory-game/blob/master/images/pizza.png?raw=true",
+            name:'pizza',
+        },
+        {
+            img:"https://github.com/kubowania/memory-game/blob/master/images/ice-cream.png?raw=true",
+            name:'ice-cream',
+        },
+        {
+            img:"https://github.com/kubowania/memory-game/blob/master/images/milkshake.png?raw=true",
+            name:'milkshake',
+        },
+        {
+            img:"https://github.com/kubowania/memory-game/blob/master/images/cheeseburger.png?raw=true",
+            name:'burger',
+        },
+        {
+            img:"https://github.com/kubowania/memory-game/blob/master/images/fries.png?raw=true",
+            name:'fries',
+        },
+        {
+            img:"https://github.com/kubowania/memory-game/blob/master/images/hotdog.png?raw=true",
+            name:'hotdog',
+        },
+        {
+            img:"https://github.com/kubowania/memory-game/blob/master/images/pizza.png?raw=true",
+            name:'pizza',
+        },
+        {
+            img:"https://github.com/kubowania/memory-game/blob/master/images/ice-cream.png?raw=true",
+            name:'ice-cream',
+        },
+
+    ];
+
+    cards.sort(() => 0.5 - Math.random())
+
+    
+    const BlankImg = 'https://github.com/kubowania/memory-game/blob/master/images/blank.png?raw=true';    
+    const WhiteImg = "https://github.com/kubowania/memory-game/blob/master/images/white.png?raw=true";
+    
+    const grid = document.querySelector('.grid')
+    const resultDisplay = document.querySelector('span')
+    let cardsChosen = []
+    let cardsChosenId = []
+    let cardsWon = []
+    
+    // const grid = document.querySelector('.grid');
+    
+    function createBoard() {
+        for (let i = 0; i < cards.length; i++) {
+          const card = document.createElement('img')
+          card.setAttribute('src',BlankImg)
+          card.setAttribute('data-id', i)
+          card.classList.add('col-4')
+          card.classList.add('col-lg-2')
+          card.addEventListener('click', flipCard)
+          grid.appendChild(card)
+        }
+    }
+    function checkForMatch(){
+        const cards = document.querySelectorAll('img')
+        const optionOneId = cardsChosenId[0]
+        const optionTwoId = cardsChosenId[1]
+
+        if(optionOneId === optionTwoId){
+            cards[optionOneId].setAttribute('src',BlankImg)
+            cards[optionTwoId].setAttribute('src',BlankImg)
+            alert('you have cilcked the same image')
+        }
+
+        else if(cardsChosen[0] === cardsChosen[1]){
+            alert('You found a match')
+            cards[optionOneId].setAttribute('src',WhiteImg)
+            cards[optionTwoId].setAttribute('src', WhiteImg)
+            cards[optionOneId].removeEventListener('click', flipCard)
+            cards[optionTwoId].removeEventListener('click', flipCard)
+            cardsWon.push(cardsChosen)
+        }
+        else{
+            cards[optionOneId].setAttribute('src',BlankImg)
+            cards[optionTwoId].setAttribute('src',BlankImg)
+            alert('Sorry, try again')
+        }
+        cardsChosen = []
+        cardsChosenId = []
+        resultDisplay.textContent = cardsWon.length
+        if  (cardsWon.length === (cards.length)/2) {
+          resultDisplay.textContent = 'Congratulations! You found them all!'
+        }
+    }
+    function flipCard(){
+        let cardId = this.getAttribute('data-id');
+        cardsChosen.push(cards[cardId].name)
+        cardsChosenId.push(cardId)
+        this.setAttribute('src',cards[cardId].img)
+
+        if (cardsChosen.length === 2){
+            setTimeout(checkForMatch, 1000)
+        }
+        console.log(cardId);
+    }
+
+    createBoard();
+})
+
+</script>
+</html>

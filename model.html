@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>JS Modal</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&family=Oleo+Script&family=Roboto&family=Varela+Round&display=swap');
+       *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            height: 100vh;
+            width: 100%;
+            background : linear-gradient(rgba(0,0,0,0.445),rgba(0,0,0,0.411)), url('https://images.unsplash.com/photo-1591644302233-574b796e9d8f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjZ8fGxhbmRpbmclMjBwYWdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60') no-repeat bottom / cover;
+        }
+        .model-overlay{
+            position: fixed;
+            top:0;
+            left:0;
+            height: 100vh;
+            width: 100%;
+            background: rgba(73,166,233,0.5);
+            display:grid;
+            place-items: center;
+            transition: 0.1s linear 0.1s;
+            visibility: hidden;
+            z-index: -10;
+        }
+        .open-modal{
+            visibility:visible;
+            z-index: 10;
+        }
+        .modelContainer{
+            position: relative;
+        }
+        
+        .close-btn{
+            position: absolute;
+            top:0;
+            right:0;
+            font-size: 22px;
+            cursor: pointer;
+        }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    
+</head>
+<body>
+    <div class="container d-flex  h-100 justify-content-center align-items-center ">
+        <div class="border d-flex  flex-column justify-content-center rounded bg-white p-5">
+            <h1 style="font-family: 'Varela Round', sans-serif;">Modal Project</h1>
+            <button  class="btn mx-5 model-btn btn-outline-secondary">Open Modal</button>
+        </div>
+    </div>
+    <div class="model-overlay">
+        <div class="modelContainer rounded bg-white p-5">
+            <!-- <button class="close-btn"><i class="fas fa-times"></i></button> -->
+            <h1 class="py-4" style="font-family: 'Varela Round', sans-serif;">Modal content</h1>
+            <i class="close-btn fas text-danger close-btn fa-times p-2 mr-2 mt-1"></i>
+        </div>
+    </div>
+</body>
+<Script>
+    const Openbtn = document.querySelector('.model-btn');
+    const Closebtn = document.querySelector('.close-btn');
+    const model = document.querySelector('.model-overlay');
+    Openbtn.addEventListener('click',function(){
+        model.classList.add('open-modal')
+        // console.log(model.classList);
+    });
+    Closebtn.addEventListener('click',function(){
+        model.classList.remove('open-modal')
+    });
+</Script>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get_Key</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body{
+            background: url(https://media.istockphoto.com/photos/crowded-concert-hall-with-scene-stage-lights-rock-show-performance-picture-id1289481257?b=1&k=20&m=1289481257&s=170667a&w=0&h=E9AEvaPx9Lv4K9unJFQynwPCjKsiWbpphw4i3fWUAcs=);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            height:95vh;
+        }
+        
+        button{
+            background:gray !important;
+        }
+        KBD{
+            display: block;
+        }
+        span{
+            display: block;
+        }
+        .show{
+            transform: scale(1.1);
+
+            transition: all 0.07s;
+            border: 1px solid #ffc600;
+            box-shadow: 0 0 10px #ffc600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="d-flex justify-content-center h-100 align-items-center">
+        <button data-key="A" class="btn btn-outline-warning mx-2">
+            <KBD>A</KBD>
+            <span>Clap</span>
+        </button>
+        <button data-key="S" class="btn btn-outline-warning mx-2">
+            <KBD>S</KBD>
+            <span>Clap</span>
+        </button>
+        <button data-key="D" class="btn btn-outline-warning mx-2">
+            <KBD>D</KBD>
+            <span>Clap</span>
+        </button>
+        <button data-key="F" class="btn btn-outline-warning mx-2">
+            <KBD>F</KBD>
+            <span>Clap</span>
+        </button>
+        <button data-key="J" class="btn btn-outline-warning mx-2">
+            <KBD>J</KBD>
+            <span>Clap</span>
+        </button>
+        <button data-key="K" class="btn btn-outline-warning mx-2">
+            <KBD>K</KBD>
+            <span>Clap</span>
+        </button>
+        <button data-key="L" class="btn btn-outline-warning mx-2">
+            <KBD>L</KBD>
+            <span>Clap</span>
+        </button>
+        <button data-key=";" class="btn btn-outline-warning mx-2">
+            <KBD>;</KBD>
+            <span>Clap</span>
+        </button>
+    <h1></h1>
+    </div>
+    </div>
+    </div>
+    <audio data-key="A" src="audio/China-Cymbal-Crash-Level-4A-www.fesliyanstudios.com.mp3"></audio>
+    <audio data-key="S" src="audio/Crash-Cymbal-Hit-B-www.fesliyanstudios.com.mp3"></audio>
+    <audio data-key="D" src="audio/Crash-Cymbal-Hit-C-www.fesliyanstudios.com.mp3"></audio>
+    <audio data-key="F" src="audio/Drum-Sticks-Hit-B-www.fesliyanstudios.com.mp3"></audio>
+    <audio data-key="J" src="audio/Floor-Tom-Drum-Hit-Level-3B-www.fesliyanstudios.com.mp3"></audio>
+    <audio data-key="K" src="audio/Hi-Hat-Closed-Hit-B1-www.fesliyanstudios.com (1).mp3"></audio>
+    <audio data-key="L" src="audio/Crash-Cymbal-Hit-C-www.fesliyanstudios.com.mp3"></audio>
+    <audio data-key=";" src="audio/Swing-and-Kick-A1-www.fesliyanstudios.com.mp3"></audio>
+
+</body>
+<script>
+    window.addEventListener("keydown", function(e) {
+    
+    // console.log(e.key);
+    const audio = document.querySelector(`audio[data-key="${e.key}"]`);
+    const btn = document.querySelector(`.btn[data-key="${e.key}"]`);
+    if(!audio) return;
+    btn.classList.add('show');
+    audio.currentTime = 0;
+    audio.play();
+    });
+
+    function  removetransition(e){
+        // console.log(e);
+        if(e.propertyName!= 'transform') return;
+
+        this.classList.remove('show');
+    };
+    // console.log(1)
+    const keys = document.querySelectorAll('.btn');
+    keys.forEach(key => key.addEventListener('transitionend',removetransition));
+</script>
+</html>

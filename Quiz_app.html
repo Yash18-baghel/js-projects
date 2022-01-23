@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz app</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        .alert-success{
+            display: block !important;
+        }
+        .alert-danger{
+            display: block !important;
+        }
+        .dis-none{
+            display:none !important;    
+        }
+        @media only screen and (max-width: 600px){
+            .w-25{
+                width: 90% !important;
+            }
+        }
+    </style>
+</head>
+<body style="background: #64729D;height: 95vh;" class="d-flex flex-column justify-content-center align-items-center">
+
+    <div class="border  content bg-white w-25 rounded shodow  pt-5">
+        <div class=" pb-4 px-4">
+            <h5 class="p-2 question">
+                Question Text.......
+            </h5>
+            <ul class="list-group">
+                <li class="py-1 list-group-item"  style="border:none;"><input name="ans" value="a" type="radio"><label class="pl-2 ansA" for="a">Ans_a</label></input></li>
+                <li class="py-1 list-group-item"  style="border:none;"><input name="ans" value="b" type="radio"><label class="pl-2 ansB" for="b">Ans_C</label></input></li>
+                <li class="py-1 list-group-item"  style="border:none;"><input name="ans" value="c" type="radio"><label class="pl-2 ansC" for="c">Ans_B</label></input></li>
+                <li class="py-1 list-group-item"  style="border:none;"><input name="ans" value="d" type="radio"><label class="pl-2 ansD" for="d">Ans_d</label></input></li>
+            </ul>
+            <div class="output alert d-none"></div>
+        </div>
+        <button disabled class="btn btn-primary btn-lg   btn-block">submit</button>
+    </div>
+    <div class="w-25 d-flex justify-content-end mt-2"><button class="btn next d-none btn-success">Next</button></div>
+    <div class="w-100 content2 d-flex dis-none justify-content-center">
+        <div class="d-none card w-25 alert alert-success">
+            <div class="card-body text-center ">
+                <h3>Test Ends Here.....</h3>
+            <p>you score is <span class="final"></span></p>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    const Questions = [
+        {
+            que:'What is HTML stands for:',
+            a:'Hyper-text Model language',
+            b:'Homo-technology Markup Length',
+            c:'Hypertext Markup Language',
+            d:'None of the above',
+            Ans:'c',
+        },
+        {
+            que:'An HTML document is saved with the ____ extension.',
+            a:'.htl',
+            b:'.js',
+            c:'.css',
+            d:'.html',
+            Ans:'d',
+        },
+        {
+            que:'Choose the correct HTML tag for a large title.',
+            a:'h1',
+            b:'Heading',
+            c:'head',
+            d:'h6',
+            Ans:'a',
+        },
+        {
+            que:'A page designed in HTML is called _____',
+            a:'Application',
+            b:'Cover Image',
+            c:'Front-end',
+            d:'Web Page',
+            Ans:'d',
+        },
+        {
+            que:'How do we write comments in HTML?',
+            a:'</…….>',
+            b:'<!……>',
+            c:'</……/>',
+            d:'<…….!>',
+            Ans:'b',
+        },
+        {
+            que:'Which of the following elements in HTML5 defines video or movie content?',
+            a:'<video>',
+            b:'<movie>',
+            c:'<audio>',
+            d:'<media>',
+            Ans:'a',
+        },
+        {
+            que:'Which element is used for or styling HTML5 layout?',
+            a:'CSS',
+            b:'JQuery',
+            c:'JavaScript',
+            d:'PHP',
+            Ans:'a',
+        },
+        {
+            que:'Which HTML tag is used for making character appearance bold?',
+            a:'<u>content</u>',
+            b:'<b>content</b>',
+            c:'<br>content</br>',
+            d:'<i>content</i>',
+            Ans:'b',
+        },
+        {
+            que:'Which of the following HTML tag is used to create an unordered list?',
+            a:'<ol>',
+            b:'<ul>',
+            c:'<li>',
+            d:'<ll>',
+            Ans:'b',
+        },
+        {
+            que:'Which of the following HTML tag is used to add a row in a table?',
+            a:'<th>',
+            b:'<td>',
+            c:'<tr>',
+            d:'<tt>',
+            Ans:'c',
+        },
+    ];
+    var i=0;
+    var count = 0;
+    getquestion();
+    function getquestion(){
+        if(i==Questions.length){
+            document.querySelector('.content').classList.add('d-none');
+            document.querySelector('.content2').classList.remove('dis-none');
+            document.querySelector('.final').innerText = `${count}/10`;
+        }
+        else{
+            q = Questions[i];
+        document.querySelector('.question').innerHTML = q.que;
+        document.querySelector('.ansA').innerText = q.a;
+        document.querySelector('.ansB').innerText = q.b;
+        document.querySelector('.ansC').innerText = q.c
+        document.querySelector('.ansD').innerText = q.d;
+        }
+    }
+    button = document.querySelector('button');
+    
+    document.querySelectorAll('input').forEach(inp => {
+        // console.log(inp.checked);
+        inp.addEventListener('click',function(){
+            
+            button.disabled = false;
+        })
+    });
+    button.addEventListener('click',function(){
+        document.querySelectorAll('input').forEach(inp => {
+            
+            inp.disabled = true;
+                if(inp.checked){
+                    document.querySelector('.next').classList.remove('d-none');        
+                    // console.log(inp.value,q.Ans)
+                    const output = document.querySelector('.output');
+                    if(inp.value == q.Ans)
+                    {
+                        count++;
+                        output.classList.add('alert-success');
+                        output.innerHTML = `correct Ans`;
+                    }
+                    else
+                    {
+                        output.classList.add('alert-danger');
+                        output.innerHTML = `Ans is ${q.Ans}`;
+                    }
+                }
+        });
+    });
+    document.querySelector('.next').addEventListener('click',function(){
+        i++;
+        document.querySelectorAll('input').forEach(inp => {
+            inp.disabled = false;
+            inp.checked = false;
+        });
+       if(document.querySelector('.output').classList.contains('alert-success'));
+       document.querySelector('.output').classList.remove('alert-success');
+        if(document.querySelector('.output').classList.contains('alert-danger'))
+        document.querySelector('.output').classList.remove('alert-danger');
+        button.disabled = true;      
+        document.querySelector('.next').classList.add('d-none');  
+        getquestion();
+    });
+
+
+</script>
+</html>

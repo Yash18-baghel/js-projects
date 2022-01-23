@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caluculator</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        .btn {
+            margin: 10px;
+            padding: 15px;
+        }
+    </style>
+</head>
+
+<body style="height: 100vh; background:#ABCBF0">
+    <h1 class="text-center py-3">My Caluculator</h1>
+    <div class="d-flex justify-content-center ">
+        <div class="calculator  p-4 rounded" style="background-color: #808080;border:#ABCBF0">
+
+            <input class="form-control bg-dark text-white text-right " value='1' style="border: #808080" type="text">
+            <div class="container">
+                <div class="row">
+                    <div class="col-3">
+                        <button id="add" class="btn-lg bg-primary text-white mt-3"
+                            style="border: #007BFF; outline:#007BFF;">+</button>
+                    </div>
+                    <div class="col-3">
+                        <button id="subs" class="btn-lg bg-primary text-white mt-3"
+                            style="border: #007BFF; outline:#007BFF;">-</button>
+                    </div>
+                    <div class="col-3">
+                        <button id="mult" class="btn-lg bg-primary text-white mt-3"
+                            style="border: #007BFF; outline:#007BFF;">x</button>
+                    </div>
+                    <div class="col-3">
+                        <button id="devide" class="btn-lg bg-primary text-white mt-3"
+                            style="border: #007BFF; outline:#007BFF;">/</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <button id="num1" class="btn-lg bg-dark text-white mt-3"
+                            style="border: #343A40; outline: #343A40;">1</button>
+                    </div>
+                    <div class="col-3">
+                        <button id="num2" class="btn-lg bg-dark text-white mt-3"
+                            style="border: #343A40; outline: #343A40;">2</button>
+                    </div>
+                    <div class="col-3">
+                        <button id="num3" class="btn-lg bg-dark text-white mt-3"
+                            style="border: #343A40; outline: #343A40;">3</button>
+                    </div>
+                    <div class="col-3">
+                        <button id="num9" class="btn-lg bg-dark text-white mt-3"
+                            style="border: #343A40; outline: #343A40;">(</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <button id="num4" class="btn-lg bg-dark text-white mt-3"
+                            style="border: #343A40; outline: #343A40;">4</button>
+                    </div>
+                    <div class="col-3">
+                        <button id="num5" class="btn-lg bg-dark text-white mt-3"
+                            style="border: #343A40; outline: #343A40;">5</button>
+                    </div>
+                    <div class="col-3">
+                        <button id="num6" class="btn-lg bg-dark text-white mt-3"
+                            style="border: #343A40; outline: #343A40;">6</button>
+                    </div>
+                    <div class="col-3">
+                        <button id="num9" class="btn-lg bg-dark text-white mt-3"
+                            style="border: #343A40; outline: #343A40;">)</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <button id="num7" class="btn-lg bg-dark text-white mt-3"
+                            style="border: #343A40; outline: #343A40;">7</button>
+                    </div>
+                    <div class="col-3">
+                        <button id="num8" class="btn-lg bg-dark text-white mt-3"
+                            style="border: #343A40; outline: #343A40;">8</button>
+                    </div>
+                    <div class="col-3">
+                        <button id="num9" class="btn-lg bg-dark text-white mt-3"
+                            style="border: #343A40; outline: #343A40;">9</button>
+                    </div>
+                    <div class="col-3">
+                        <button id="num9" value = "clr" class="btn-lg bg-dark text-white mt-3 px-2"
+                            style="border: #343A40; outline: #343A40;"><i class="fas fa-backspace"></i></button>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-3">
+                        <button id="decimal" class="btn-lg bg-danger text-white mt-3 px-3"
+                            style=" border: #DC3545;outline:#DC3545">.</button>
+                    </div>
+                    <div class="col-3">
+                        <button id="num0" class="btn-lg bg-dark text-white mt-3 px-3"
+                            style="border: #343A40; outline: #343A40;">0</button>
+                    </div>
+                    <div class="col-3">
+                        <button id="clear" class="btn-lg bg-danger text-white mt-3 px-2"
+                            style="border: #DC3545;outline:#DC3545;">AC</button>
+                    </div>
+                    <div class="col-3">
+                        <button class="btn-lg bg-light mt-3" style="border: none;outline:white;;">=</button>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+    </div>
+</body>
+<script>
+    const btns = document.querySelectorAll('button');
+    const output = document.querySelector('input');
+    console.log(output.value);
+    let val = '';
+    btns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            if (btn.innerText == 'x') {
+                val += '*';
+  
+            }
+            else if (btn.innerText == 'AC') {
+                val = '';
+      
+
+            }
+            else if (btn.innerText == '=') {
+                // console.log(;
+                val = eval(val);
+          
+            }
+                else if(btn.value == "clr"){
+                    console.log(btn.value)
+                    val =  val.slice(0, -1);
+                    console.log(val);
+        
+                }
+            else {
+                val += btn.innerText;
+                console.log(val);
+
+            }
+            output.value = val;
+        });
+    });
+</script>
+
+</html>

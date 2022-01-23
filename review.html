@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reviews</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <style>
+        @media(max-width: 767.98px) {
+        img{
+        width: 75px !important;
+        height:75px !important;
+        }
+    }
+    </style>
+
+</head>
+<body>
+    <div  class="container d-flex justify-content-center flex-column align-items-center">
+        <h3 class="my-5">Our Reviews</h3>
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-6 col-12">
+                <div class="card px-5">
+        
+                    <div class="card-body px-5 pt-2 d-flex justify-content-center">
+                        <div class="px-5">
+                            <img id="img" class="img-fluid img card-img-top" style='height: 175px;width:175px;border-radius: 50%;' src="https://media.istockphoto.com/photos/happy-african-girl-blogger-record-travel-vlog-shoot-selfie-looking-at-picture-id1270868851?b=1&k=20&m=1270868851&s=170667a&w=0&h=Jfp4tOwHAIZOIZJtH0RwL_I79hGL6YtcwEmPUvErEOw=" alt="" ></div>
+                        </div>
+                        <h1 id="name" style="letter-spacing: 5px;" class="text-center name">YASH BAGHEL</h1>
+                        <h4 id="job" class="text-primary job text-center">UX DESIGNER</h4>
+                        <p  id="text" class="text-center">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex ullam libero, repellendus, ea maiores quia provident dolores incidunt blanditiis eligendi animi eos pariatur obcaecati modi ducimus corrupti quaerat voluptatibus praesentium!</p>
+                        <div class="buttons my-3 d-flex justify-content-center ">
+                            <button id="prev" class="btn prev btn-outline-primary mx-2"><i class="fas fa-chevron-left"></i></button>
+                            <button id="rand" class="btn rendom btn-outline-success">Surprize Me!</button>
+                            <button id="next" class="btn next btn-outline-primary mx-2"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+
+</body>
+<script>
+    const reviews = [
+        {
+            id:1,
+            name:"YASH BAGHEL",
+            text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti voluptatem voluptatibus dolorem expedita, deserunt necessitatibus beatae, esse similique eveniet, autem ex. Nemo dolores, voluptas consequatur temporibus commodi consequuntur assumenda eaque deserunt numquam non repellat vitae natus. Quidem, at voluptate eaque maxime veniam ducimus odio, ex rerum facilis dolor placeat. Placeat.",
+            img:"https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8c2VsZmllfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+            job:"Full Stack Dev"
+        },
+        {
+            id:2,
+            name:"DAVID",
+            text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti voluptatem voluptatibus dolorem expedita, deserunt necessitatibus beatae, esse similique eveniet, autem ex. Nemo dolores, voluptas consequatur temporibus commodi consequuntur assumenda eaque deserunt numquam non repellat vitae ",
+            img:"https://media.istockphoto.com/photos/young-man-is-playing-with-a-dog-and-do-selfie-picture-id1300658241?b=1&k=20&m=1300658241&s=170667a&w=0&h=0lrTViinfnDjbWDgxV0TDDSAXvzSgmrN-pKq0q60hqA=",
+            job:"Data Analyst"
+        },
+        {
+            id:3,
+            name:"MANISH",
+            text:"Lorem ipsum dolor sse similique eveniet, autem ex. Nemo dolores, voluptas consequatur temporibus commodi consequuntur assumenda eaque deserunt numquam non repellat vitae natus. Quidem, at voluptate eaque maxime veniam ducimus odio, ex rerum facilis dolor placeat. Placeat.",
+            img:"https://images.unsplash.com/photo-1551847812-f815b31ae67c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fHNlbGZpZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+            job:"Video Editor"
+        },
+        {
+            id:4,
+            name:"MAYANK",
+            text:"Lorem ipsum dolor  dolorem expedita, deserunt necessitatibus beatae, esse similique eveniet, autem ex. Nemo dolores, voluptas consequatur temporibus commodi consequuntur assumenda eaque deserunt numquam non repellat vitae natus. Quidem, at voluptate eaque maxime veniam ducimus odio, ex rerum facilis dolor placeat. Placeat.",
+            img:"https://images.unsplash.com/photo-1603112579965-e24332cc453a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHNlbGZpZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60    ",
+            job:"Blogger"
+        },
+        {
+            id:5,
+            name:"PENNY",
+            text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti voluptatem voluptatibus dolorem expedita, facilis dolor placeat. Placeat.",
+            img:"https://media.istockphoto.com/photos/happy-african-girl-blogger-record-travel-vlog-shoot-selfie-looking-at-picture-id1270868851?b=1&k=20&m=1270868851&s=170667a&w=0&h=Jfp4tOwHAIZOIZJtH0RwL_I79hGL6YtcwEmPUvErEOw=",
+            job:"PHP Dev"
+        },
+    
+    ];
+
+    const name = document.getElementById('name');
+    const job =  document.getElementById('job');
+    const img =  document.getElementById('img');
+    const text=  document.getElementById('text');
+    const rand = document.getElementById('rand');
+    const next = document.getElementById('next');
+    const prev = document.getElementById('prev');
+    let count = 0;
+    window.addEventListener('DOMContentLoaded',function(){
+        rndm();
+    });
+    next.addEventListener('click',function(){
+        count++;
+        if(count > reviews.length - 1){
+            count = 0;
+        }
+        show();
+    });
+    rand.addEventListener('click',function(){
+        rndm();
+    })
+    prev.addEventListener('click',function(){
+        count--;
+        if(count < 0){
+            count = reviews.length - 1;
+        }
+        show();
+    });  
+
+    function rndm(){
+        count = Math.floor(Math.random() * reviews.length); 
+        show();
+    }
+
+    function show(){
+        const person = reviews[count];
+        name.textContent = person.name;
+        img.src = person.img;
+        text.textContent = person.text;
+        job.textContent = person.job;
+
+    }
+
+</script>
+</html>
+

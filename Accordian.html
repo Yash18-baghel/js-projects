@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordian</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Licorice&family=M+PLUS+Rounded+1c:wght@500&family=Oleo+Script&family=Roboto&family=Varela+Round&display=swap" rel="stylesheet">
+    <style>
+        .open{
+            transform: rotate(45deg);
+            transition: transform 0.1s linear;
+        }
+        .open{
+            transform: rotate(45deg);
+            
+        }
+        .show {
+            display:none;
+            transition: 0.1s linear 0.1s;
+
+        }
+    </style>
+</head>
+<!-- #3D4462; -->
+<body style="background-color:  #48529E;height: 100vh;">
+    <div class="container d-flex justify-content-center flex-column py-5">
+        <div class="flex-fill bd-highlight d-flex justify-content-center">
+            <h1 style="color:rgb(255,215,0);letter-spacing: 5px;font-family: 'Licorice', cursive;" class="display-2">Genral Quesions</h1>
+        </div>
+        <div class=" d-flex justify-content-center align-items-center flex-column accordian-list container">
+            <div  class="d-flex my-3 justify-content-center align-items-center flex-column accordian-item shadow-lg rounded bg-white w-50 px-3 py-2" style="background-color:  #E8CEBB !important">
+                <div id='1' style="position:relative;letter-spacing: 2px;" class="accordian-header w-100 py-1">
+                    <h3 >Do you accept paytm</h1>
+                    <i  style="position: absolute; right:0; top:30%; font-size: 20px;color: #D49B18; transition: transform 0.1s linear;" class="btn fas  fa-plus"></i>  <!--<i class="fas fa-plus"></i>-->
+                </div>
+                <div class="accordian-content pt-3 show" style="border-top: 1px solid black ;">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad voluptatibus enim temporibus placeat quo non. Fugit, ut magni laboriosam natus vel excepturi, nam porro modi neque illo repellendus ab eaque!</p>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center align-items-center flex-column accordian-item shadow-lg rounded bg-white w-50 px-3 py-2" style="background-color:  #E8CEBB !important">
+                <div id="2" style="position:relative;letter-spacing: 2px;" class="accordian-header w-100 py-1">
+                    <h3 >Do you accept paytm</h1>
+                    <i style="position: absolute; right:0; top:30%; font-size: 20px;color: #D49B18; transition: transform 0.1s linear;" class="btn fas  fa-plus"></i>  <!--<i class="fas fa-plus"></i>-->
+                </div>
+                <div class="accordian-content pt-3 show" style="border-top: 1px solid black ;">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad voluptatibus enim temporibus placeat quo non. Fugit, ut magni laboriosam natus vel excepturi, nam porro modi neque illo repellendus ab eaque!</p>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</body>
+
+<script>
+    // const btns = document.querySelectorAll(".btn");
+    // btns.forEach(function(btn){
+    //     btn.addEventListener('click',function(){
+    //         btn.classList.toggle('open');
+    //     })
+    //     console.log(btn.classList)
+
+    // });
+    const items = document.querySelectorAll('.accordian-item')
+    items.forEach(function(item){
+        item.addEventListener('click',function(){
+
+            btn = item.querySelector('.btn');
+             item.querySelector('.accordian-content').classList.toggle('show')
+            x = btn.classList.toggle('open');
+
+            console.log(x);
+        })
+    });
+</script>
+
+</html>
